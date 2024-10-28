@@ -77,3 +77,22 @@ class TestBowlingGame(unittest.TestCase):
         game.add_frame(f9)
         game.add_frame(f10)
         self.assertRaises(BowlingError, game.add_frame, f11)
+
+    def test_calculate_score(self):
+        game = BowlingGame()
+        game.add_frame(Frame(1,5))
+        game.add_frame(Frame(2,5))
+
+        self.assertEqual(13, game.calculate_score())
+
+    def test_calculate_score(self):
+        game = BowlingGame()
+        game.add_frame(Frame(1,5))
+        game.add_frame(Frame(2,5))
+
+        self.assertEqual(13, game.calculate_score())
+
+    def test_calculate_empty_game(self):
+        game = BowlingGame()
+
+        self.assertEqual(0, game.calculate_score())
