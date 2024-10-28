@@ -156,6 +156,40 @@ class TestBowlingGame(unittest.TestCase):
 
         self.assertEqual(112, game.calculate_score())
 
+    def test_calculate_score_spare_followed_by_spare(self):
+        game = BowlingGame()
+
+        game.add_frame(Frame(8, 2))
+        game.add_frame(Frame(5, 5))
+        game.add_frame(Frame(7, 2))
+        game.add_frame(Frame(3, 6))
+        game.add_frame(Frame(4, 4))
+        game.add_frame(Frame(5, 3))
+        game.add_frame(Frame(3, 3))
+        game.add_frame(Frame(4, 5))
+        game.add_frame(Frame(8, 1))
+        game.add_frame(Frame(2, 6))
+
+        self.assertEqual(98, game.calculate_score())
+
+    def test_calculate_score_last_spare(self):
+        game = BowlingGame()
+
+        game.add_frame(Frame(1, 5))
+        game.add_frame(Frame(3, 6))
+        game.add_frame(Frame(7, 2))
+        game.add_frame(Frame(3, 6))
+        game.add_frame(Frame(4, 4))
+        game.add_frame(Frame(5, 3))
+        game.add_frame(Frame(3, 3))
+        game.add_frame(Frame(4, 5))
+        game.add_frame(Frame(8, 1))
+        game.add_frame(Frame(2, 8))
+
+        game.set_first_bonus_throw(7)
+
+        self.assertEqual(90, game.calculate_score())
+
     def test_calculate_empty_game(self):
         game = BowlingGame()
 
